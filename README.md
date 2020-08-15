@@ -24,16 +24,16 @@ python script.py -f ./cnhs/
 # Requisitos
 Objetivo: Extrair informações de uma CNH
 
-Solução: Devido ao grande número de ruídos em um documento CNH, decidi criar um modelo de detecção de objetos com TensorFlow 1, capaz de extrair as caixas de diferentes campos da CNH de forma eficiente.
+Solução: Devido ao grande número de ruídos em um documento CNH, decidi criar um modelo de detecção de objetos com TensorFlow 1, capaz de extrair de forma eficiente as caixas de diferentes campos da CNH.
 
 # Treinamento do modelo
-Para treinar o modelo, usei a API de Detecção de Objetos do Tensorflow. Como modelo base foi usado o <b>Faster-RCNN-Inception-V2-COCO</b>.
+Para treinar o modelo, usei a API de Detecção de Objetos do Tensorflow. Como modelo base foi utilizado o <b>Faster-RCNN-Inception-V2-COCO</b>.
 
 Pros: O modelo consegue detectar com facilidade os campos de uma CNH.
 Cons: Tempo de processamento.
 
 # Dataset para Treinamento
-A base de treinamento foi construída utilizando diversas fotos de apenas uma CNH em ambientes e com qualidades diferentes. Para criar os labels em cada imagem foi utilizado o software <a href="https://github.com/tzutalin/labelImg">labelImg</a>. Os labels anotados para treinamento foram: Nome, RG, CPF, Data Nascimento, Filiação(pais), CNH, Validade, Categoria.
+A base de treinamento foi construída utilizando diversas fotos de apenas uma CNH em ambientes e com qualidades diferentes. Para criar os labels em cada imagem foi utilizado o software <a href="https://github.com/tzutalin/labelImg">labelImg</a>. Os labels anotados para treinamento foram: Nome, RG, CPF, Data Nascimento, Filiação(pais), CNH, Validade e Categoria.
 
 # Leitura dos campos com OCR
 Nesta etapa foram utilizados apenas os labels CPF, Data Nascimento e CNH.

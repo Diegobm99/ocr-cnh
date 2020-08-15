@@ -1,6 +1,6 @@
 # ocr-cnh
 
-# Como rodar o código
+## Como rodar o código
 Clonar o git e instalar os requirements. Na pasta do projeto, rodar os seguintes comandos pelo prompt do python:
 
 Para uma imagem específica:
@@ -21,7 +21,7 @@ Exemplo:
 python script.py -f ./cnhs/
 ```
 
-# Requisitos
+## Requisitos
 Objetivo: Extrair informações de uma CNH
 
 Solução: Devido ao grande número de ruídos em um documento CNH, decidi criar um modelo de detecção de objetos com TensorFlow 1, capaz de extrair de forma eficiente as caixas de diferentes campos da CNH.

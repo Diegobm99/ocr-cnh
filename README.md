@@ -1,25 +1,25 @@
 # ocr-cnh
 
 # Como rodar o código
-Clonar o git e instalar os requirementes. Na pasta do projeto, rodas os seguintes códigos:
+Clonar o git e instalar os requirements. Na pasta do projeto, rodar os seguintes comandos pelo prompt do python:
 
 Para uma imagem específica:
-'''
+```
 python script.py -i [PATH para a imagem]
-'''
+```
 Exemplo:
-'''
+```
 python script.py -i ./cnhs/cnh2.jpg
-'''
+```
 
 Para várias imagens contidas em uma pasta:
-'''
+```
 python script.py -f [PATH para a pasta]
-'''
+```
 Exemplo:
-'''
+```
 python script.py -f ./cnhs/
-'''
+```
 
 
 Objetivo: Extrair informações de uma CNH

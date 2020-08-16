@@ -3,10 +3,10 @@
 ## Requisitos
 - <b>Objetivo:</b> Extrair informações de uma CNH;
 
-- <b>Solução:</b> Devido ao grande número de ruídos em um documento CNH, não achei uma solução satisfatória usando apenas processamento de imagem para detectar 'caixas' em uma imagem, portanto decidi criar um modelo de detecção de objetos com TensorFlow 1.x, capaz de extrair de forma eficiente as caixas de diferentes campos da CNH, para enfim extrair os textos por meio de OCR.
+- <b>Solução:</b> Devido ao grande número de ruídos em um documento CNH, decidi criar um modelo de detecção de objetos com TensorFlow 1.x, capaz de extrair de forma eficiente as caixas de diferentes campos da CNH, para enfim extrair os textos por meio de OCR.
 
 ## Treinamento do modelo
-Para treinar o modelo, usei a API de Detecção de Objetos do Tensorflow localmente. Como modelo base foi utilizado o <b>Faster-RCNN-Inception-V2-COCO</b>.
+Para treinar o modelo, usei localmente a API de Detecção de Objetos do Tensorflow. Como modelo base foi utilizado o <b>Faster-RCNN-Inception-V2-COCO</b>.
 
 - <b>Pros:</b> O modelo consegue detectar com facilidade os campos de uma CNH;
 
@@ -26,17 +26,17 @@ Para extração de texto dos campos foi utilizado o <a href="https://github.com/
 
 <b>Desafios:</b> Devido ao grande número de ruídos e sujeiras nas imagens, foi preciso utilizar diversos tipos de tratamentos, para logo em seguida manipular os textos com regex para construir o output final. Um problema não resolvido foi a dificuldade na extração de documentos em baixa qualidade ou com reflexos/blur em excesso.
 
-<b>Pontos de melhoria:</b> Como há uma inconsistência com o uso da OCR, uma opção seria treinar um modelo próprio para extração específica dos campos da CNH.
+<b>Pontos de melhoria:</b> Como há uma inconsistência com o uso da OCR, uma opção seria treinar um modelo próprio para extração de texto específica para campos da CNH.
 
 ## Como testar o código
-O código foi feito no Windows com Python 3.7.
+O código foi feito no <b>Windows</b> com <b>Python 3.7</b>.
 
 Clonar o git e instalar os requirements. Para testar o código, foram utilizadas CNHs de tamanhos e qualidades diferentes, contidas na pasta './cnhs/'.
 
  - É possível rodar o código pelo Jupyter Notebook. Um exemplo foi feito em <a href="https://github.com/Diegobm99/ocr-cnh/blob/master/ocr-cnh.ipynb">ocr-cnh.ipynb</a>;
 
 
- - Ou pelo próprio prompt do python:
+ - Ou pelo próprio prompt:
 
 Na pasta do projeto, rodar os seguintes comandos:
 

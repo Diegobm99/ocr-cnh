@@ -1,6 +1,6 @@
 import utils_cnh
 import read_model
-from PIL import Image
+from PIL import Image, ExifTags
 import numpy as np
 import cv2
 
@@ -9,6 +9,22 @@ def crop(path, detection_graph):
     lbs = ['nome', 'rg', 'cpf', 'nasc', 'pais', 'cnh', 'validade', 'cat']
 
     image = Image.open(path)
+    try:
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation]=='Orientation':
+                break
+        exif = dict(image._getexif().items())
+
+        if exif[orientation] == 3:
+            image=image.rotate(180, expand=True)
+        elif exif[orientation] == 6:
+            image=image.rotate(270, expand=True)
+        elif exif[orientation] == 8:
+            image=image.rotate(90, expand=True)
+    except (AttributeError, KeyError, IndexError):
+        pass
+
+
     image_np = utils_cnh.load_image_into_numpy_array(image)
 
     h, w = image_np.shape[0:2]

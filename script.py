@@ -43,7 +43,7 @@ if args['folder'] != None:
     path_img = os.listdir(args['folder'])
     for path in path_img:
         try:
-            imgs = inference.crop(args['folder'] + path, detection_graph)
+            imgs = inference.crop(args['folder'] + '/' + path, detection_graph)
             print('\n', path, dict_cnh(imgs))
 
         except:

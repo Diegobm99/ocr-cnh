@@ -47,20 +47,20 @@ Clonar o git e instalar os requirements. Para testar o código, foram utilizadas
 
 Na pasta do projeto, rodar os seguintes comandos:
 
-Para uma imagem específica:
+#### Para uma imagem específica:
 ```
 python script.py -i [PATH para a imagem]
 ```
-Exemplo:
+#### Exemplo:
 ```
 python script.py -i ./cnhs/cnhfake.jpg
 ```
 
-Para várias imagens contidas em uma pasta:
+#### Para várias imagens contidas em uma pasta:
 ```
 python script.py -f [PATH para a pasta]
 ```
-Exemplo:
+#### Exemplo:
 ```
 python script.py -f ./cnhs/
 ```

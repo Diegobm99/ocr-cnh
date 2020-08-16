@@ -6,16 +6,18 @@
 - <b>Solução:</b> Devido ao grande número de ruídos em um documento CNH, decidi criar um modelo de detecção de objetos com TensorFlow 1.x, capaz de extrair de forma eficiente as caixas de diferentes campos da CNH, para enfim extrair os textos por meio de OCR.
 
 ## Treinamento do modelo
-Para treinar o modelo, usei a API de Detecção de Objetos do Tensorflow. Como modelo base foi utilizado o <b>Faster-RCNN-Inception-V2-COCO</b>.
+Para treinar o modelo, usei a API de Detecção de Objetos do Tensorflow localmente. Como modelo base foi utilizado o <b>Faster-RCNN-Inception-V2-COCO</b>.
 
 - <b>Pros:</b> O modelo consegue detectar com facilidade os campos de uma CNH;
 
-- <b>Cons:</b> Tempo de processamento.
+- <b>Cons:</b> Tempo de treino e de processamento da inferência.
 
 ## Dataset para Treinamento
 A base de treinamento foi construída utilizando diversas fotos de apenas uma CNH em ambientes e com qualidades diferentes. Para criar os labels em cada imagem foi utilizado o software <a href="https://github.com/tzutalin/labelImg">labelImg</a>. Os labels anotados para treinamento foram: <b>Nome, RG, CPF, Data Nascimento, Filiação(pais), CNH, Validade e Categoria</b>.
 
 ![Base de treino](basetreino.png)
+
+Mesmo com apenas um documento, o modelo conseguiu generalizar para CNHs diferentes.
 
 ## Leitura dos campos com OCR
 Nesta etapa foram utilizados apenas os labels <b>CPF, Data Nascimento e CNH</b>.
@@ -29,7 +31,7 @@ O código foi feito no Windows com Python 3.7.
 
 Clonar o git e instalar os requirements. Para testar o código, foram utilizadas CNHs de tamanhos e qualidades diferentes, contidas na pasta './cnhs/'.
 
- - É possível rodar o código pelo Jupyter Notebook. Um exemplo foi feito em <a href="https://github.com/Diegobm99/ocr-cnh/blob/master/ocr-cnh.ipynb">ocr-cnh.ipynb</a>.
+ - É possível rodar o código pelo Jupyter Notebook. Um exemplo foi feito em <a href="https://github.com/Diegobm99/ocr-cnh/blob/master/ocr-cnh.ipynb">ocr-cnh.ipynb</a>;
 
 
  - Ou pelo próprio prompt do python:

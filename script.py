@@ -10,9 +10,9 @@ import ocr_cnh
 # Argumentos passados com path da pasta ou imagem
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", type=str,
-	help="path to input image")
+    help="path to input image")
 ap.add_argument("-f", "--folder", type=str,
-	help="path to input folder")
+    help="path to input folder")
 
 args = vars(ap.parse_args())
 
@@ -42,10 +42,17 @@ detection_graph = read_model.model()
 if args['folder'] != None:
     path_img = os.listdir(args['folder'])
     for path in path_img:
-        imgs = inference.crop(args['folder'] + path, detection_graph)
-        print('\n', path, dict_cnh(imgs))
-        
+        try:
+            imgs = inference.crop(args['folder'] + path, detection_graph)
+            print('\n', path, dict_cnh(imgs))
+
+        except:
+            print('\n', path, 'Campos não encontrados.')
+
 # Caso o argumento passado seja uma imagem, faz o processo de exrtação na imagem
 elif args['image'] != None:
-    imgs = inference.crop(args['image'], detection_graph)
-    print('\n', args['image'].split('/')[-1], dict_cnh(imgs))
+    try:
+        imgs = inference.crop(args['image'], detection_graph)
+        print('\n', args['image'].split('/')[-1], dict_cnh(imgs))
+    except:
+        print('\n', args['image'].split('/')[-1], '-- Campos não encontrados.')

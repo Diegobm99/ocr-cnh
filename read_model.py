@@ -2,8 +2,10 @@
 ## https://github.com/datitran/object_detector_app/blob/master/object_detection_app.py
 ## https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10/blob/master/Object_detection_image.py
 
+import logging
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # FATAL
+
 import tensorflow.compat.v1 as tf
 import numpy as np
 

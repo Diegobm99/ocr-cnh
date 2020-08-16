@@ -1,26 +1,5 @@
 # ocr-cnh
 
-## Como rodar o código
-Clonar o git e instalar os requirements. Na pasta do projeto, rodar os seguintes comandos pelo prompt do python:
-
-Para uma imagem específica:
-```
-python script.py -i [PATH para a imagem]
-```
-Exemplo:
-```
-python script.py -i ./cnhs/cnh2.jpg
-```
-
-Para várias imagens contidas em uma pasta:
-```
-python script.py -f [PATH para a pasta]
-```
-Exemplo:
-```
-python script.py -f ./cnhs/
-```
-
 ## Requisitos
 Objetivo: Extrair informações de uma CNH
 
@@ -42,7 +21,30 @@ Para extração de texto dos campos foi utilizado o <a href="https://github.com/
 
 Desafios: Devido ao grande número de ruídos, foi preciso utilizar em cada imagem diversos tipos de tratamentos, para logo em seguida tratar cada texto com regex para construir o output final. Um problema não resolvido foi a dificuldade na extração de documentos em baixa qualidade ou com reflexos/blur em excesso.
 
-## Teste
-Para testar o código, foi utilizado CNHs de tamanho e qualidade diferentes, contidos na pasta './cnhs/'.
+## Como testar o código
+Clonar o git e instalar os requirements.
+
+Para testar o código, foi utilizado CNHs de tamanhos e qualidades diferentes, contidos na pasta './cnhs/'.
 
 É possível também rodar o código pelo Jupyter Notebook. Um exemplo foi feito em <a href="https://github.com/Diegobm99/ocr-cnh/blob/master/ocr-cnh.ipynb">ocr-cnh.ipynb</a>.
+
+
+Na pasta do projeto, rodar os seguintes comandos pelo prompt do python:
+
+Para uma imagem específica:
+```
+python script.py -i [PATH para a imagem]
+```
+Exemplo:
+```
+python script.py -i ./cnhs/cnhfake.jpg
+```
+
+Para várias imagens contidas em uma pasta:
+```
+python script.py -f [PATH para a pasta]
+```
+Exemplo:
+```
+python script.py -f ./cnhs/
+```

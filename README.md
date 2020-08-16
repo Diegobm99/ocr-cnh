@@ -3,7 +3,7 @@
 ## Requisitos
 - <b>Objetivo:</b> Extrair informações de uma CNH;
 
-- <b>Solução:</b> Devido ao grande número de ruídos em um documento CNH, decidi criar um modelo de detecção de objetos com TensorFlow 1.x, capaz de extrair de forma eficiente as caixas de diferentes campos da CNH, para enfim extrair os textos por meio de OCR.
+- <b>Solução:</b> Devido ao grande número de ruídos em um documento CNH, não achei uma solução satisfatória usando apenas processamento de imagem para detectar 'caixas' em uma imagem, portanto decidi criar um modelo de detecção de objetos com TensorFlow 1.x, capaz de extrair de forma eficiente as caixas de diferentes campos da CNH, para enfim extrair os textos por meio de OCR.
 
 ## Treinamento do modelo
 Para treinar o modelo, usei a API de Detecção de Objetos do Tensorflow localmente. Como modelo base foi utilizado o <b>Faster-RCNN-Inception-V2-COCO</b>.

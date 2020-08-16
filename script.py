@@ -47,7 +47,7 @@ if args['folder'] != None:
             print('\n', path, dict_cnh(imgs))
 
         except:
-            print('\n', path, 'Campos não encontrados.')
+            print('\n', path, '-- Campos não encontrados.')
 
 # Caso o argumento passado seja uma imagem, faz o processo de exrtação na imagem
 elif args['image'] != None:

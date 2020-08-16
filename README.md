@@ -15,6 +15,8 @@ Para treinar o modelo, usei a API de Detecção de Objetos do Tensorflow. Como m
 ## Dataset para Treinamento
 A base de treinamento foi construída utilizando diversas fotos de apenas uma CNH em ambientes e com qualidades diferentes. Para criar os labels em cada imagem foi utilizado o software <a href="https://github.com/tzutalin/labelImg">labelImg</a>. Os labels anotados para treinamento foram: <b>Nome, RG, CPF, Data Nascimento, Filiação(pais), CNH, Validade e Categoria</b>.
 
+![Base de treino](basetreino.png)
+
 ## Leitura dos campos com OCR
 Nesta etapa foram utilizados apenas os labels <b>CPF, Data Nascimento e CNH</b>.
 

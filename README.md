@@ -8,9 +8,9 @@
 - <b>Tarefas:</b> Treinar o modelo de detecção de campos e criar o código para extrair os textos com OCR;
 
 - <b>Fluxo do processo:</b>
-+ Detectar os campos da CNH;
-+ Extrair os textos com OCR;
-+ Organizar o output em um dicionário.
+  1. Detectar os campos da CNH;
+  2. Extrair os textos com OCR;
+  3. Organizar o output em um dicionário.
 
 ## Treinamento do modelo
 Para treinar o modelo, usei localmente a API de Detecção de Objetos do Tensorflow. Como modelo base foi utilizado o <b>Faster-RCNN-Inception-V2-COCO</b>.

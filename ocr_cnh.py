@@ -6,25 +6,29 @@ import cv2
 import re
 from utils_cnh import validaCPF, validaCNH
 
+# PATH para o executável do tesseract
 ocr.pytesseract.tesseract_cmd = "./Tesseract-OCR/tesseract.exe"
 
+# Função para extração do CPF
 def cpf_(cpf_img):
     h = cpf_img.shape[0]
 
     cpf_img = cpf_img[int(0.1*h):int(0.9*h),:]
 
+    # Transforma a imagem para gray e concatena 4x para melhor resultado na OCR
     cpf_img_gray = cv2.cvtColor(cpf_img, cv2.COLOR_RGB2GRAY)
-
     cpf_img_gray = np.concatenate((cpf_img_gray, cpf_img_gray), axis=0)
     cpf_img_gray = np.concatenate((cpf_img_gray, cpf_img_gray), axis=1)
 
+    # Aplica threshhold para destacar as letras/números
     cpf_img_gray_th1 = cv2.adaptiveThreshold(cpf_img_gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,8)
     cpf_img_gray_th2 = cv2.adaptiveThreshold(cpf_img_gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,6)
 
-
+    # Concatena a imagem em RGB 4x para um melhor resultado na OCR
     cpf_img_rgb = np.concatenate((cpf_img, cpf_img), axis=0)
     cpf_img_rgb = np.concatenate((cpf_img_rgb, cpf_img_rgb), axis=1)
 
+    # Aplica a OCR nas imagens geradas
     cpf_ocr_gray = ocr.image_to_string(cpf_img_gray, lang='por')
     cpf_ocr_rgb = ocr.image_to_string(cpf_img, lang='por')
     cpf_ocr_gray_th1 = ocr.image_to_string(cpf_img_gray_th1, lang='por')
@@ -32,6 +36,7 @@ def cpf_(cpf_img):
 
     cpf_ocr = cpf_ocr_gray + ' ' + cpf_ocr_rgb + ' ' + cpf_ocr_gray_th1 + ' ' + cpf_ocr_gray_th2
 
+    # Limpeza e busca da informação requerida no texto extraído
     cpf_ocr = cpf_ocr.replace('.', '')
     cpf_ocr = cpf_ocr.replace('-', '')
     cpf_ocr = cpf_ocr.replace(',', '')
@@ -39,38 +44,39 @@ def cpf_(cpf_img):
 
     cpf_ocr = re.findall(r'\d{11}\b', cpf_ocr)
 
-
     cpf_ocr_u = list(set(cpf_ocr))
-
     cpf = ''
     if len(cpf_ocr_u) > 0:
         for c in cpf_ocr_u:
             if validaCPF(c):
                 cpf = c
-
     return(cpf)
 
+# Função para extração da Data Nascimento
 def nasc_(nasc_img):
+    # Transforma a imagem para gray
     nasc_img_gray = cv2.cvtColor(nasc_img, cv2.COLOR_RGB2GRAY)
 
+    # Concatena a imagem em gray 4x para um melhor resultado na OCR
     nasc_img_gray = np.concatenate((nasc_img_gray, nasc_img_gray), axis=0)
     nasc_img_gray = np.concatenate((nasc_img_gray, nasc_img_gray), axis=1)
 
-    nasc_ocr = ocr.image_to_string(nasc_img_gray, lang='por')
-
+    # Aplica threshhold para destacar as letras/números
     nasc_img_gray2 = cv2.adaptiveThreshold(nasc_img_gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,8)
     nasc_img_gray3 = cv2.adaptiveThreshold(nasc_img_gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,6)
 
+    # Aplica a OCR nas imagens geradas
+    nasc_ocr = ocr.image_to_string(nasc_img_gray, lang='por')
     nasc_ocr2 = ocr.image_to_string(nasc_img_gray2, lang='por')
     nasc_ocr3 = ocr.image_to_string(nasc_img_gray3, lang='por')
 
     nasc_ocr = nasc_ocr + ' ' + nasc_ocr2 + ' ' + nasc_ocr3
 
+    # Limpeza e busca da informação requerida no texto extraído
     nasc_ocr = re.findall(r'\d{2}\b/\d{2}\b/\d{4}\b', nasc_ocr)
 
     count_nasc = nasc_ocr
     nasc_ocr = list(set(nasc_ocr))
-
     nasc = ''
     if len(nasc_ocr) > 0:
         ns = nasc_ocr.copy()
@@ -98,22 +104,28 @@ def nasc_(nasc_img):
 
     return(nasc)
 
+# Função para extração da CNH
 def cnh_(cnh_img):
     h = cnh_img.shape[0]
 
     cnh_img = cnh_img[int(0.1*h):int(0.9*h),:]
 
+    # Transforma a imagem para gray
     cnh_img_gray = cv2.cvtColor(cnh_img, cv2.COLOR_RGB2GRAY)
 
+    # Concatena a imagem em gray 4x para um melhor resultado na OCR
     cnh_img_gray = np.concatenate((cnh_img_gray, cnh_img_gray), axis=0)
     cnh_img_gray = np.concatenate((cnh_img_gray, cnh_img_gray), axis=1)
 
+    # Aplica threshhold para destacar as letras/números
     cnh_img_gray_th1 = cv2.adaptiveThreshold(cnh_img_gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,8)
     cnh_img_gray_th2 = cv2.adaptiveThreshold(cnh_img_gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,11,6)
 
+    # Concatena a imagem em RGB 4x para um melhor resultado na OCR
     cnh_img_rgb = np.concatenate((cnh_img, cnh_img), axis=0)
     cnh_img_rgb = np.concatenate((cnh_img_rgb, cnh_img_rgb), axis=1)
 
+    # Aplica a OCR nas imagens geradas
     cnh_ocr_gray = ocr.image_to_string(cnh_img_gray, lang='por')
     cnh_ocr_rgb = ocr.image_to_string(cnh_img, lang='por')
     cnh_ocr_gray_th1 = ocr.image_to_string(cnh_img_gray_th1, lang='por')
@@ -121,6 +133,7 @@ def cnh_(cnh_img):
 
     cnh_ocr = cnh_ocr_gray + ' ' + cnh_ocr_rgb + ' ' + cnh_ocr_gray_th1 + ' ' + cnh_ocr_gray_th2
 
+    # Limpeza e busca da informação requerida no texto extraído
     cnh_ocr = cnh_ocr.replace('.', '')
     cnh_ocr = cnh_ocr.replace('-', '')
     cnh_ocr = cnh_ocr.replace(',', '')
@@ -129,7 +142,6 @@ def cnh_(cnh_img):
     cnh_ocr = re.findall(r'\d{11}\b', cnh_ocr)
 
     cnh_ocr_u = list(set(cnh_ocr))
-
     cnh = ''
     if len(cnh_ocr_u) > 0:
         for c in cnh_ocr_u:

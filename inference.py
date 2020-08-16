@@ -2,6 +2,7 @@ import utils_cnh
 import read_model
 from PIL import Image
 import numpy as np
+import cv2
 
 # Função para fazer o Crop dos campos detectados pelo Modelo
 def crop(path, detection_graph):

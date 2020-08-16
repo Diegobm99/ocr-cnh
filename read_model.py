@@ -1,13 +1,17 @@
+## https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb
+## https://github.com/datitran/object_detector_app/blob/master/object_detection_app.py
+## https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10/blob/master/Object_detection_image.py
+
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow.compat.v1 as tf
 import numpy as np
 
-
 def model():
     PATH_TO_FROZEN_GRAPH = './model/frozen_inference_graph.pb'
     PATH_TO_LABELS = './model/labelmap.pbtxt'
 
+    # Load the Tensorflow model into memory.
     detection_graph = tf.Graph()
     with detection_graph.as_default():
         od_graph_def = tf.GraphDef()

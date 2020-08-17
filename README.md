@@ -36,7 +36,7 @@ Para extração de texto dos campos foi utilizado o <a href="https://github.com/
 
 <b>Desafios:</b> Devido ao grande número de ruídos e sujeiras nas imagens, foi preciso utilizar diversos tipos de tratamentos, para logo em seguida manipular os textos com regex para construir o output final. Um problema não resolvido foi a dificuldade na extração de documentos em baixa qualidade ou com reflexos/blur em excesso.
 
-<b>Pontos de melhoria:</b> Como há uma inconsistência com o uso da OCR, uma opção seria treinar um modelo próprio para extração de texto específica para campos da CNH.
+<b>Pontos de melhoria:</b> Como há uma inconsistência com o uso da OCR, uma opção seria treinar um modelo próprio para auxiliar na extração de texto específica para campos da CNH.
 
 ## Como testar o código
 O código foi feito no <b>Windows</b> com <b>Python 3.7</b>.

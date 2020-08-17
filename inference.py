@@ -8,6 +8,7 @@ import cv2
 def crop(path, detection_graph):
     lbs = ['nome', 'rg', 'cpf', 'nasc', 'pais', 'cnh', 'validade', 'cat']
 
+    # Leitura da imagem e ajustamento da posição
     image = Image.open(path)
     try:
         for orientation in ExifTags.TAGS.keys():
@@ -24,7 +25,6 @@ def crop(path, detection_graph):
     except (AttributeError, KeyError, IndexError):
         pass
 
-
     image_np = utils_cnh.load_image_into_numpy_array(image)
 
     h, w = image_np.shape[0:2]
@@ -32,12 +32,14 @@ def crop(path, detection_graph):
         r = 1800/h
         image_np = cv2.resize(image_np, (int(r*w),int(r*h)))
 
+    # Inferência e deteção dos campos
     image_np_expanded = np.expand_dims(image_np, axis=0)
     output_dict = read_model.run_inference_for_single_image(image_np, detection_graph)
 
     caixa = output_dict['detection_boxes'][output_dict['detection_scores'] > 0.6]
     classe = output_dict['detection_classes'][output_dict['detection_scores'] > 0.6]
 
+    # Crop dos campos detectados
     lista_img = []
     h, w = image_np.shape[:2]
     for i in range(len(classe)):

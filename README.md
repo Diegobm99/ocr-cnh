@@ -12,6 +12,9 @@
   2. Extrair os textos com OCR;
   3. Organizar o output em um dicionário.
 
+- <b>Linguagem utilizada:</b> Python;
+- <b>Principais bibliotecas:</b> Tensorflow, OpenCV, pytesseract.
+
 ## Treinamento do modelo
 Para treinar o modelo, usei localmente a API de Detecção de Objetos do Tensorflow. Como modelo base foi utilizado o <b>Faster-RCNN-Inception-V2-COCO</b>.
 
